@@ -20,6 +20,8 @@ from tokenizers.models import WordLevel
 from tokenizers.trainers import WordLevelTrainer
 from tokenizers.pre_tokenizers import Whitespace
 
+from torchsummary import summary
+
 import torchmetrics
 from torch.utils.tensorboard import SummaryWriter
 
@@ -197,6 +199,9 @@ def train_model(config):
 
     train_dataloader, val_dataloader, tokenizer_src, tokenizer_tgt = get_ds(config)
     model = get_model(config, tokenizer_src.get_vocab_size(), tokenizer_tgt.get_vocab_size()).to(device)
+
+    summary(model)
+    
     # Tensorboard
     writer = SummaryWriter(config['experiment_name'])
 
