@@ -289,6 +289,7 @@ def get_me_a_model(config):
 
     train_dataloader, val_dataloader, tokenizer_src, tokenizer_tgt = get_ds(config)
     model = get_model(config, tokenizer_src.get_vocab_size(), tokenizer_tgt.get_vocab_size()).to(device)
+    return model
 
 if __name__ == '__main__':
     warnings.filterwarnings("ignore")
