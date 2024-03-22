@@ -200,7 +200,7 @@ def train_model(config):
     train_dataloader, val_dataloader, tokenizer_src, tokenizer_tgt = get_ds(config)
     model = get_model(config, tokenizer_src.get_vocab_size(), tokenizer_tgt.get_vocab_size()).to(device)
 
-    summary(model)
+    summary(model, (1, 50))
     
     # Tensorboard
     writer = SummaryWriter(config['experiment_name'])
